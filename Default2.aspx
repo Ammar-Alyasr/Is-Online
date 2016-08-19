@@ -100,6 +100,19 @@
             </ItemTemplate>
         </asp:TemplateField>
 
+                        <asp:TemplateField >
+                            <HeaderTemplate>
+                                Son Haraketler
+                            </HeaderTemplate>
+            <ItemTemplate>
+                
+                <div >
+                    <asp:Button ID="Button2" runat="server" CausesValidation="false" 
+                    Text="Detay" CommandArgument='<%# Eval("siteID") %>' OnClick="Button2_Click" />
+
+                </div>
+            </ItemTemplate>
+        </asp:TemplateField>
                        
 
 

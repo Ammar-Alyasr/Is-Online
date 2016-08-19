@@ -41,6 +41,16 @@ public partial class Default2 : System.Web.UI.Page
     }
 
 
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+
+        Button btn = (Button)sender;
+        
+        string a = btn.CommandArgument;
+        Session["siteid"] = a;
+        Response.Redirect("Default8.aspx");
+    }
+
     protected void Button1_Click(object sender, EventArgs e)
     {
         try
@@ -229,7 +239,7 @@ public partial class Default2 : System.Web.UI.Page
             try
             {
                 message.Subject = "Is Online !";
-                message.Body = @"<h2>oops , Sitenizden birinde Değişiklik olmuştur ...  </h2><p></p><p>Bilgileri Aşağıda yeralan Site Şu Durumla Karşılaşmıştır: '" + Durum + "' </p> <p></p>Site Adi: '" + Adi + "'  <p></p>Site URL: '" + url + "' <p></p>Site Son Durumu: '" + Durum + "' <p></p>Site Son Güncelleme Zamanı '" + Songuncelleme + "' <p></p><p></p><p></p>  <h1>Iyi Kodalamalar)...</h1>";
+                message.Body = @"<h2>oops , Sitenizden birinde Değişiklik olmuştur ...  </h2><p></p><p>Bilgileri Aşağıda yeralan Site Şu Durumla Karşılaşmıştır: '" + Durum + "' </p> <p></p>Site Adi: '" + Adi + "'  <p></p>Site URL: '" + url + "' <p></p>Site Son Durumu: '" + Durum + "' <p></p>Site Son Güncelleme Zamanı '" + Songuncelleme + "' <p></p><p></p><p></p>  <h1>Iyi Kodlamalar)...</h1>";
 
                 message.IsBodyHtml = true;
                 smtp.Send(message);

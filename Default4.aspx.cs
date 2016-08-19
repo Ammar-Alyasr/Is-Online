@@ -188,7 +188,7 @@ public partial class Default4 : System.Web.UI.Page
             {
                 message.Subject = "Is Online !";
                 //message.Body = "Oops , '" + url + "' sitesinde bir değişiklik olmuştur, Gidin ve kontorl edin ";
-               message.Body= @"<h2>oops , Sitenizden birinde Değişiklik olmuştur ...  </h2><p></p><p>Bilgileri Aşağıda yeralan Site Şu Durumla Karşılaşmıştır: '"+Durum+ "' </p> <p></p>Site Adi: '" + Adi + "'  <p></p>Site URL: '" + url + "' <p></p>Site Son Durumu: '" + Durum + "' <p></p>Site Son Güncelleme Zamanı '" + Songuncelleme+ "' <p></p><p></p><p></p>  <h1>Iyi Kodalamalar)...</h1>";
+               message.Body= @"<h2>oops , Sitenizden birinde Değişiklik olmuştur ...  </h2><p></p><p>Bilgileri Aşağıda yeralan Site Şu Durumla Karşılaşmıştır: '"+Durum+ "' </p> <p></p>Site Adi: '" + Adi + "'  <p></p>Site URL: '" + url + "' <p></p>Site Son Durumu: '" + Durum + "' <p></p>Site Son Güncelleme Zamanı '" + Songuncelleme+ "' <p></p><p></p><p></p>  <h1>Iyi Kodlamalar)...</h1>";
  
                // message.Body = "Your request is processed.!. Please click on the button to go the website  <a href=http://www.google.com> <img src=http://localhost:57198/image/explorer.png  width=50 height=31 border=0 alt=Click  title=Click ></a> ";
                 message.IsBodyHtml = true;
