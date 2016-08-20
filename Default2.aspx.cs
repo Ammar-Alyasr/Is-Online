@@ -9,7 +9,7 @@ using System.Net.Mail;
 using System.Net;
 public partial class Default2 : System.Web.UI.Page
 {
-
+    veritabani vtb = new veritabani();
     SqlConnection baglanti = new SqlConnection("Data Source=DESKTOP-8GG3N5D;Initial Catalog=sites;Integrated Security=SSPI;MultipleActiveResultSets=True");
 
     veritabani vtab = new veritabani();
@@ -57,6 +57,7 @@ public partial class Default2 : System.Web.UI.Page
         {
             Button btn = (Button)sender;
             Guncelle2(btn.CommandArgument);
+            
         }
         catch (Exception exe)
         {
@@ -106,7 +107,7 @@ public partial class Default2 : System.Web.UI.Page
 
 
                         Send(Session["Email"].ToString(), htaMsji, dr["siteAd"].ToString(), dr["siteURL"].ToString(), dr["zaman"].ToString());
-
+                        yapilanDegisiklik(dr["siteID"].ToString(), dr["userID"].ToString(), DateTime.Now.ToString(), htaMsji);
                     }
                 }
 
@@ -223,6 +224,17 @@ public partial class Default2 : System.Web.UI.Page
 
     }
 
+    public bool yapilanDegisiklik(string siteID, string userID, string zaman, string degisik)
+    {
+        bool snc = false;
+        var sql = vtb.GetDataSet("INSERT INTO Degisiklikler (siteID, userID, zaman, GosterilenDegisiklik) values  ('" + siteID + "' , '" + userID + "', '" + zaman + "' ,'" + degisik + "' ) ");
+        if (sql != null)
+        {
+            snc = true;
+        }
+        return snc;
+
+    }
 
     void Send(string to, string Durum, string Adi, string url, string Songuncelleme)
     {

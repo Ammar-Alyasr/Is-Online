@@ -51,7 +51,7 @@
 				<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
 					<ul class="resp-tabs-list">
 						<li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Login</span></li>
-<%--						<li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><label>/</label><span>Sign up</span></li>--%>
+						<%--<li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><label>/</label><span>Sign up</span></li>--%>
 						<div class="clearfix"></div>
 					</ul>				  	 
 					<div class="resp-tabs-container">
@@ -60,30 +60,22 @@
              <ContentTemplate>
 							<div class="login-top">
                                
-                                    <%--<input type="text" class="email" placeholder="Email" required="" />--%>
+                                    
                                     <asp:TextBox ID="TextBox1Em"   placeholder="Email" runat="server"></asp:TextBox>
 
                                     <asp:TextBox ID="TextBox1Pas"  placeholder="Password" type ="password"   runat="server"></asp:TextBox>
-                                    <%--<input type="password" class="password" placeholder="Password" required="" />--%>
-
-                                <div class="account" >
-                                    
-                                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                                        
+                              
+                                <div class="account" >                 
+                                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>                               
                                 </div>
-
 								<div class="login-bottom login-bottom1">
                                     <div class="submit">
-                                        <%--<input type="submit" id="btn_login"  href="Default2.aspx" runat="server" onserverclick="btn_login_ServerClick" value="LOGIN"/>
-                                        --%>
-
                                         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1"  Text="Giriş" />
-
                                     </div>
-                                    		
 
                                     <div class="clear"></div>
 								</div>	
+
                                 </ContentTemplate>
        <Triggers>
             <asp:AsyncPostBackTrigger ControlID="Button1" EventName="Click" />
