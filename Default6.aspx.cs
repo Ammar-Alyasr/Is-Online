@@ -14,6 +14,7 @@ public partial class Default6 : System.Web.UI.Page
     
     protected void Page_Load(object sender, EventArgs e)
     {
+        SqlDataSource1.SelectCommand = "SELECT * FROM Siteler WHERE userID= '"+Session["UserID"] +"'";
         if (Session["UserID"] != null)
         {
         }

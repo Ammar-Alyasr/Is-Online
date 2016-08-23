@@ -181,7 +181,7 @@ public partial class Default2 : System.Web.UI.Page
     public bool yapilanDegisiklik(string siteID, string userID, string zaman, string degisik)
     {
         bool snc = false;
-        var sql = vtb.GetDataSet("INSERT INTO Degisiklikler (siteID, userID, zaman, GosterilenDegisiklik) values  ('" + siteID + "' , '" + userID + "', '" + zaman + "' ,'" + degisik + "' ) ");
+        var sql = vtb.cmd("INSERT INTO Degisiklikler (siteID, userID, zaman, GosterilenDegisiklik) values  ('" + siteID + "' , '" + userID + "', '" + zaman + "' ,'" + degisik + "' ) ");
         if (sql != null)
         {
             snc = true;

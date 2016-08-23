@@ -114,7 +114,7 @@ public partial class Default4 : System.Web.UI.Page
          
     protected void Timer1_Tick(object sender, EventArgs e)
     {
-        var sql = "SELECT * FROM Siteler where userID='"+Session["UserID"] +"' ";
+        var sql = "SELECT * FROM Siteler";
         SqlConnection.ClearPool(baglanti);
         baglanti.Open();
         SqlCommand kmt = new SqlCommand(sql, baglanti);

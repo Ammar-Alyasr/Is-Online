@@ -13,6 +13,17 @@
     .controls {
         height: 51px;
     }
+    .iwrap { overflow:hidden; width:100%;  max-height:100%; max-height:100%;}
+   #frame {
+        -ms-zoom: 0.50;
+        -moz-transform: scale(0.50);
+        -moz-transform-origin: 0 0;
+        -o-transform: scale(0.50);
+        -o-transform-origin: 0 0;
+        -webkit-transform: scale(0.50);
+        -webkit-transform-origin: 0 0;
+        overflow:hidden;
+    }
 </style>
 </asp:Content>
 
@@ -23,18 +34,18 @@
      <div style="margin:0 auto;">
                     
                     </div>
+    <div class="row"><div class="col-md-8">
                     <asp:ScriptManager ID="ScriptManager1" runat="server">
                     </asp:ScriptManager>
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
 
-
                     <asp:GridView ID="KapListe" runat="server" 
         
                     AlternatingRowStyle-CssClass="str_iki" AutoGenerateColumns="False"
                     CellPadding="4" CssClass="table table-bordered table-striped table-hover" GridLines="None" PageSize="20"
-                    Width="80%" ForeColor="#333333" HorizontalAlign="Center" Height="245px" >
+                    Width="80%" ForeColor="#333333" HorizontalAlign="Center" Height="245px" OnSelectedIndexChanged="KapListe_SelectedIndexChanged" >
                     <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                     <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                     <PagerStyle CssClass="pagination" HorizontalAlign="Center"
@@ -45,13 +56,42 @@
                     </EmptyDataTemplate>
                     <AlternatingRowStyle CssClass="str_iki" BackColor="White" ForeColor="#284775"></AlternatingRowStyle>
                   <Columns>
-                      <asp:BoundField DataField="siteAd" HeaderText="Site Adi" SortExpression="siteAd" />
-                      
-                      
-                      <asp:BoundField DataField="GosterilenDegisiklik" HeaderText="Yaptigi Degisik" SortExpression="GosterilenDegisiklik" />
-                     <asp:BoundField DataField="zaman" HeaderText="Degisiklik Tarihi" SortExpression="zaman" />
-                     <asp:BoundField DataField="siteDurum2" HeaderText="Simdiki Durum" SortExpression="siteDurum2" />
-                   
+                   <asp:TemplateField>
+                            <HeaderTemplate>
+                                Site Ad
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <div>
+                                    <%# Eval("sad") %>
+                                </div>
+
+                            </ItemTemplate>
+
+                        </asp:TemplateField>
+                     <asp:TemplateField>
+                            <HeaderTemplate>
+                                Açıklama
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <div>
+                                    <%# Eval("Aciklama") %>
+                                </div>
+
+                            </ItemTemplate>
+
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <HeaderTemplate>
+                               Tarih
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <div>
+                                    <%# Eval("tarih") %>
+                                </div>
+
+                            </ItemTemplate>
+
+                        </asp:TemplateField>
                   </Columns>
                     <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                     <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
@@ -65,7 +105,17 @@
                         
                         </asp:UpdatePanel>
 
-    
+        
+    </div><div class="col-md-4"><div class=""><br /><br /><br /><br /><br />
+ 
+        <div id="wrap" class="iwrap">
+        <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+
+</div>
+</div></div></div>
+  
+ 
+
     </asp:Content>
 
 
