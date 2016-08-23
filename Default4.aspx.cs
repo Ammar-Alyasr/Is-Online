@@ -9,6 +9,7 @@ using System.Net.Mail;
 
 public partial class Default4 : System.Web.UI.Page
 {
+    KontrolEt ktrl = new KontrolEt();
     veritabani vtb = new veritabani();
     SqlConnection baglanti = new SqlConnection("Data Source=DESKTOP-8GG3N5D;Initial Catalog=sites;Integrated Security=SSPI;MultipleActiveResultSets=True");
     protected void Page_Load(object sender, EventArgs e)
@@ -33,8 +34,8 @@ public partial class Default4 : System.Web.UI.Page
         SqlDataReader dr = kmt.ExecuteReader();
         dr.Read();
         string vriTbndanGlnURL = dr["siteURL"].ToString();
-
-        string htaMsji = konrolEt(vriTbndanGlnURL);
+        
+        string htaMsji = ktrl.konrolEt(vriTbndanGlnURL);
 
         
         SqlCommand kkmt = new SqlCommand(ssql, baglanti);
@@ -43,7 +44,7 @@ public partial class Default4 : System.Web.UI.Page
          {
              if (gelenID == ddr["siteID"].ToString())
                {
-                 if (/*dr["siteDurum2"].ToString() */htaMsji == ddr["siteDurum2"].ToString())
+                 if (htaMsji == ddr["siteDurum2"].ToString())
                   {
                     Label2.Text += "<br />" + dr["siteAd"].ToString() + "&nbsp; &nbsp;&nbsp;&nbsp;" + htaMsji;
 
@@ -60,7 +61,7 @@ public partial class Default4 : System.Web.UI.Page
                     DrmuGncle2(htaMsji, ddr["siteID"].ToString());
                    
 
-                    Send(Session["Email"].ToString(), htaMsji, dr["siteAd"].ToString(), dr["siteURL"].ToString(), dr["zaman"].ToString());
+                    ktrl.Send(Session["Email"].ToString(), htaMsji, dr["siteAd"].ToString(), dr["siteURL"].ToString(), dr["zaman"].ToString());
                   
                     yapilanDegisiklik(dr["siteID"].ToString(), dr["userID"].ToString(), DateTime.Now.ToString(), htaMsji);
 
@@ -171,88 +172,6 @@ public partial class Default4 : System.Web.UI.Page
     //    return GenerateScreenshot(url, -1, -1);
     //}
 
-
-    void Send(string to,  string Durum , string Adi, string url, string Songuncelleme)
-    {
-        SmtpClient smtp = new SmtpClient();
-        smtp.Host = "smtp.gmail.com";
-        smtp.Port = 587;
-        smtp.EnableSsl = true;
-        smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-        smtp.UseDefaultCredentials = false;
-        smtp.Credentials = new NetworkCredential("yaaserhamod@gmail.com", "258025802yaser");
-
-        using (var message = new MailMessage("yaaserhamod@gmail.com", to))
-        {
-            try
-            {
-                message.Subject = "Is Online !";
-                //message.Body = "Oops , '" + url + "' sitesinde bir değişiklik olmuştur, Gidin ve kontorl edin ";
-               message.Body= @"<h2>oops , Sitenizden birinde Değişiklik olmuştur ...  </h2><p></p><p>Bilgileri Aşağıda yeralan Site Şu Durumla Karşılaşmıştır: '"+Durum+ "' </p> <p></p>Site Adi: '" + Adi + "'  <p></p>Site URL: '" + url + "' <p></p>Site Son Durumu: '" + Durum + "' <p></p>Site Son Güncelleme Zamanı '" + Songuncelleme+ "' <p></p><p></p><p></p>  <h1>Iyi Kodlamalar)...</h1>";
- 
-               // message.Body = "Your request is processed.!. Please click on the button to go the website  <a href=http://www.google.com> <img src=http://localhost:57198/image/explorer.png  width=50 height=31 border=0 alt=Click  title=Click ></a> ";
-                message.IsBodyHtml = true;
-                smtp.Send(message);
-
-            }
-            catch (Exception ext)
-            {
-                 //url = ext.InnerException.ToString();
-                 Send("ammar.ahmet@gmail.com","hata olustu", ext.InnerException.ToString(), "","" );
-                //Label2.Text= ext.InnerException.ToString();
-            }
-        }
-    }
-
-
-    public string konrolEt(string gelenURL)
-    {
-        HttpWebResponse response = null;
-        string donus = "";
-        try
-        {
-            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(gelenURL);
-            request.Method = "GET";
-
-            response = (HttpWebResponse)request.GetResponse();
-
-            donus = response.StatusCode.ToString();
-            //Label1.Text = response.StatusCode.ToString();
-        }
-        catch (WebException ex)
-        {
-            if (ex.Status == WebExceptionStatus.ProtocolError)
-            {
-
-                response = (HttpWebResponse)ex.Response;
-
-                donus = ("Errorcode: {0}" + (int)response.StatusCode);
-                //Label1.Text = ("Errorcode: {0}" + (int)response.StatusCode);
-                
-            }
-            else
-            {
-                donus = "Hata; URL Adresinde Bir Yanlis olabilir mi).... " + "<br />"  + ("Error: {0}" + ex.Status);
-               // Label1.Text = ("Error: {0}" + ex.Status);
-            }
-
-        }
-
-        catch (Exception ext)
-        {
-            ext.Message.Clone();
-            donus = "Hatali Giris";
-
-        }
-        finally
-        {
-            if (response != null)
-            {
-                response.Close();
-            }
-        }
-        return (donus);
-    }
 
     public bool yapilanDegisiklik(string siteID, string userID, string zaman, string degisik)
     {
