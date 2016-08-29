@@ -5,9 +5,9 @@
 
 <asp:Content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolder2">
     
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sitesConnectionString %>" DeleteCommand="DELETE FROM [Siteler] WHERE [siteID] = @siteID" InsertCommand="INSERT INTO [Siteler] ([siteAd], [siteURL], [siteDurum], [controlSuresi]) VALUES (@siteAd, @siteURL, @siteDurum, @controlSuresi)" SelectCommand="SELECT * FROM [Siteler]" UpdateCommand="UPDATE [Siteler] SET [siteAd] = @siteAd, [siteURL] = @siteURL, [siteDurum] = @siteDurum, [controlSuresi] = @controlSuresi WHERE [siteID] = @siteID">
+<%--    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sitesConnectionString %>" DeleteCommand="DELETE FROM [Siteler] WHERE [siteID] = @siteID" InsertCommand="INSERT INTO [Siteler] ([siteAd], [siteURL], [siteDurum], [controlSuresi]) VALUES (@siteAd, @siteURL, @siteDurum, @controlSuresi)" SelectCommand="SELECT * FROM [Siteler]" UpdateCommand="UPDATE [Siteler] SET [siteAd] = @siteAd, [siteURL] = @siteURL, [siteDurum] = @siteDurum, [controlSuresi] = @controlSuresi WHERE [siteID] = @siteID">--%>
 
-            </asp:SqlDataSource>
+           <%-- </asp:SqlDataSource>--%>
 
                 <div style="margin:0 auto;">
                     
@@ -23,7 +23,7 @@
         
                     AlternatingRowStyle-CssClass="str_iki" AutoGenerateColumns="False"
                     CellPadding="4" CssClass="table table-bordered table-striped table-hover" GridLines="None" PageSize="20"
-                    Width="80%" DataSourceID="SqlDataSource1" ForeColor="#333333" HorizontalAlign="Center" Height="245px" OnSelectedIndexChanged="KapListe_SelectedIndexChanged">
+                    Width="80%"  ForeColor="#333333" HorizontalAlign="Center" Height="245px" OnSelectedIndexChanged="KapListe_SelectedIndexChanged">
                     <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                     <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                     <PagerStyle CssClass="pagination" HorizontalAlign="Center"
@@ -33,7 +33,7 @@
                         Hiç kayıt yok...
                     </EmptyDataTemplate>
                     <AlternatingRowStyle CssClass="str_iki" BackColor="White" ForeColor="#284775"></AlternatingRowStyle>
-                    <Columns>
+                        <Columns>
                         <asp:TemplateField>
                             <HeaderTemplate>
                                 Site Ad
@@ -88,12 +88,12 @@
 
                         <asp:TemplateField >
                             <HeaderTemplate>
-                                Anı Güncelleme
+                                AnLık Güncelleme
                             </HeaderTemplate>
             <ItemTemplate>
                 
                 <div >
-                    <asp:Button ID="guncelButton" runat="server" CausesValidation="false" 
+                    <asp:Button ID="guncelButton" class="btn btn-info btn-sm" runat="server" CausesValidation="false" 
                     Text="Güncelle" CommandArgument='<%# Eval("siteID") %>' OnClick="Button1_Click" />
 
                 </div>
@@ -105,9 +105,9 @@
                                 Son Haraketler
                             </HeaderTemplate>
             <ItemTemplate>
-                
+                    
                 <div >
-                    <asp:Button ID="Button2" runat="server" CausesValidation="false" 
+                    <asp:Button ID="Button2" class="btn btn-warning btn-sm" runat="server" CausesValidation="false" 
                     Text="Detay" CommandArgument='<%# Eval("siteID") %>' OnClick="Button2_Click" />
 
                 </div>

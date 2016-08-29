@@ -36,13 +36,13 @@ public class KontrolEt
 
                 response = (HttpWebResponse)ex.Response;
 
-                donus = ("Errorcode: {0}" + (int)response.StatusCode);
+                donus = ("Errorcode: " + (int)response.StatusCode);
 
 
             }
             else
             {
-                donus = "Hata; URL Adresinde Bir Yanlis olabilir mi).... " + "<br />" + ("Error: {0}" + ex.Status);
+                donus = "Hata; Internet Baglanitiniz Yok Veya URL Adresinde Bir Yanlis olabilir ).... " + "<br />" + ("HataKodu: " + ex.Status);
 
             }
 
@@ -90,7 +90,7 @@ public class KontrolEt
             catch (Exception ext)
             {
 
-                Send("ammar.ahmet@gmail.com", "Email Gondermede hata olustu", ext.InnerException.ToString(), "", "");
+                //Send("ammar.ahmet@gmail.com", "Email Gondermede hata olustu", ext.InnerException.ToString(), "", "");
 
             }
         }

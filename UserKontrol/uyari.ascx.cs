@@ -9,7 +9,7 @@ public partial class UserKontrol_uyari : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //messageBox1.Hide();
     }
 
     public void show(string durum, string mesaj) {
@@ -17,6 +17,7 @@ public partial class UserKontrol_uyari : System.Web.UI.UserControl
         lbl_uyari.Text = mesaj;
        
         messageBox1.Show();
+       
     }
 
     protected void Button1_Click(object sender, EventArgs e)

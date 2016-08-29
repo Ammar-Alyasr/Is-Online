@@ -25,7 +25,8 @@
 			    </div>
 			    <div class="control-group">
 			      <!-- Username -->
-			      <label class="control-label"  for="username">Site Isimi</label>
+			      
+
 			      <div class="controls">
 			          <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sitesConnectionString %>" DeleteCommand="DELETE FROM [Siteler] WHERE [siteID] = @siteID" InsertCommand="INSERT INTO [Siteler] ([siteAd], [siteURL], [siteDurum], [controlSuresi]) VALUES (@siteAd, @siteURL, @siteDurum, @controlSuresi)" SelectCommand="SELECT * FROM [Siteler]" UpdateCommand="UPDATE [Siteler] SET [siteAd] = @siteAd, [siteURL] = @siteURL, [siteDurum] = @siteDurum, [controlSuresi] = @controlSuresi WHERE [siteID] = @siteID">
                           <DeleteParameters>
@@ -45,46 +46,49 @@
                               <asp:Parameter Name="siteID" Type="Int32" />
                           </UpdateParameters>
                       </asp:SqlDataSource>
-			          <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+			          <%--<asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Username" aria-describedby="sizing-addon3"></asp:TextBox>--%>
+                      <br /><br />
+                      <label class="control-label"  for="username">Site Isimi</label>
+                      <div class="input-group input-group-sm">
+  <span class="input-group-addon" id="sizing-addon3">@</span>
+  <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Username" aria-describedby="sizing-addon3"></asp:TextBox>
+</div>
 &nbsp;</div>
 			    </div>
-			    <div class="control-group">
-			      <!-- Password-->
-			      <label class="control-label" for="password">URL</label>
-			      <div class="controls">
-			        &nbsp;<asp:TextBox ID="TextBox2"  runat="server"></asp:TextBox>
-			      </div>
-                    
+			    
+        <br /><br /><br /><br /><br /><br />
+                    <label for="basic-url">Sitenin URL Adresi</label>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">https://orenek.com/blabla/</span>
+  <asp:TextBox ID="TextBox2" class="form-control" runat="server"></asp:TextBox>
+</div>
+
+                    <br /><br /><br /><br />
 <div class="container">
   
     <div class="form-group">
-      
-        <label for="sel1">Kontrol Suresi<asp:DropDownList ID="DropDownList1" runat="server" Width="185px">
+        
+        <label for="basic-url">Kontrol Süresi</label> <br /> 
+    <asp:DropDownList ID="DropDownList1" runat="server" Width="185px">
             <asp:ListItem Text="1 DK"></asp:ListItem>
             <asp:ListItem Text="5 DK"></asp:ListItem>
             <asp:ListItem Text="1 SAAT"></asp:ListItem>
             <asp:ListItem Text="1 GUN"></asp:ListItem>
+            <asp:ListItem class="label label-danger" Text="Passiv" runat="server" ></asp:ListItem>
         </asp:DropDownList>
-        </label>&nbsp;
+       
         </div>
 			    </div>
+
 			    <div class="control-group">
 			      
-			      <div class="controls">
-      
+			      <div class="controls">   
 			          <br />
-                      
-                    
                       <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Ekle" Width="74px" />
-                      
 
-                     
-      
 			      </div>
 			    </div>
-			  
-			
-		</div>
+     
 	</div>
 </div>
 

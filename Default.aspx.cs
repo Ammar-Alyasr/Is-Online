@@ -26,6 +26,7 @@ public partial class _Default : System.Web.UI.Page
       
        var user =  vtab.GetDataRow("SELECT * From users where userEmail ='" + kadi + "' AND userPas='" + pass + "'");
         
+
         if (user != null) {
             string isim = user["userAdSoyad"].ToString();
             string email = user["userEmail"].ToString();

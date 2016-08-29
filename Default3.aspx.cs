@@ -105,11 +105,6 @@ public partial class Default3 : System.Web.UI.Page
 
     }
 
-    protected void Button2_Click(object sender, EventArgs e)
-    {
-        uyari1.show("hata", "HATALI GİRİŞ");
-    }
-
 
     protected void Page_Load(object sender, EventArgs e)
     {

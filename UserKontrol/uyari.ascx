@@ -1,11 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="uyari.ascx.cs" Inherits="UserKontrol_uyari" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
-<style type="text/css">
-    .auto-style1 {
-        height: 24px;
-        background-color:aqua ;
-    }
-</style>
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
 <asp:Button ID="btnShow" runat="server" Style="display: none;" />
@@ -16,19 +10,19 @@
                 <asp:Label ID="Label1" runat="server" Text="Bilgi"></asp:Label>
             </div>
     <asp:Panel ID="Group5" runat="server" Width="100%" Visible="true">
-            <div class="auto-style1">
-
-                <asp:Label ID="lbl_uyari" runat="server" Text=""></asp:Label>
-
-                </div>
+           
+        <div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <asp:Label ID="lbl_uyari" runat="server" Text=""></asp:Label>
+</div>
         </asp:Panel>
       </div>
-    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="KAPAT" />
+    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="KAPAT" class="btn btn-info btn-xs" />
     </asp:Panel>
   
         <ajaxToolkit:ModalPopupExtender  ID="messageBox1" runat="server" TargetControlID="btnShow" PopupControlID="pnlPopup" BackgroundCssClass="messageBox"></ajaxToolkit:ModalPopupExtender>
 
-        <br />
+        
 
 </ContentTemplate>
     <Triggers>

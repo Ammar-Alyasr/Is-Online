@@ -146,6 +146,10 @@ public partial class Default4 : System.Web.UI.Page
             {
                 b = "23:00:00";
             }
+            else if (b == "Passiv")
+            {
+                break;
+            }
             TimeSpan vark = TimeSpan.Parse(a);
             TimeSpan contrlS = TimeSpan.Parse(b);
 
@@ -155,7 +159,6 @@ public partial class Default4 : System.Web.UI.Page
                 Guncelle2(dr["siteID"].ToString());
             }
 
-       
             else
             {
                 Label2.Text += "<br />" +   " no";

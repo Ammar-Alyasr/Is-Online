@@ -11,8 +11,6 @@ using System.Web.UI.WebControls;
 
 public partial class Default8 : System.Web.UI.Page
 {
-    //SqlConnection baglanti = new SqlConnection("Data Source=DESKTOP-8GG3N5D;Initial Catalog=sites;Integrated Security=SSPI;MultipleActiveResultSets=True");
-    //KontrolEt ktr = new KontrolEt();
     veritabani vtab = new veritabani();
     public class SiteHareket {
         public string sid { get; set; }
@@ -24,23 +22,7 @@ public partial class Default8 : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        //try
-        //{
-        //    string sql = "SELECT Degisiklikler.zaman ,Degisiklikler.GosterilenDegisiklik , Siteler.siteID ,Siteler.siteDurum2,Siteler.siteAd FROM Degisiklikler INNER JOIN Siteler on   Degisiklikler.siteID=Siteler.siteID WHERE Degisiklikler.siteID='" + Session["siteid"] + "' ORDER BY Degisiklikler.zaman DESC ";
-        //    SqlCommand Command = new SqlCommand(sql, baglanti);
-
-        //    SqlDataAdapter da = new SqlDataAdapter(Command);
-        //    DataTable dt = new DataTable();
-        //    da.Fill(dt);
-        //    KapListe.DataSource = dt;
-        //    KapListe.DataBind();
-        //    baglanti.Close();
-        //}
-        //catch (Exception ext)
-        //{
-        //    ktr.Send("ammar.ahmet@gmail.com", ext.ToString(), "Sayfa detalinde", "Degiskenler", Session["Isim"].ToString());
-        //    baglanti.Close();
-        //}
+       //Literal2.Text= "<div class=\"auto - style1\">< button type = \"button\" class=\"btn btn-info btn-lg\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Action<span class=\"caret\"></span></button><ul class=\"dropdown-menu\"> <li><a href = \"#\" > Ayarlarini Değiştir</a></li><li><a href = \"#\" > Istatistikler </ a ></ li >< li role=\"separator\" class=\"divider\"></li><li><a href = \"#\" > < asp:Label ID = \"Label1\" runat=\"server\" class=\"label label-danger\" Text=\"Kaldır\"></asp:Label></a></li></ul></div>";
         if (!IsPostBack) {
             ilk_gelis();
         }
@@ -48,13 +30,13 @@ public partial class Default8 : System.Web.UI.Page
     }
     public void ilk_gelis() {
         listele();
-       // iframe();
+       //iframe();
     }
     public void iframe() {
 
-        string url = "http://mu.edu.tr/";
-        Literal1.Text = " <iframe id=\"frame\" width=\"680\" height='360' class='if' src='"+url+"'></iframe>";
-
+        string url = "https://getbootstrap.com/";
+        Literal1.Text = " <iframe id=\"frame\" width=\"680\" height='360' class='embed-responsive-item' src='" + url+ "' frameborder='0' allowfullscreen'></iframe>";
+            
     }
 
 
@@ -83,7 +65,7 @@ public partial class Default8 : System.Web.UI.Page
                 if (durum == "OK") {
                     icon = "<span class='label label-success'><span class='glyphicon glyphicon-arrow-up'></span> Up</span>";
                 }
-                st.Aciklama = durum + " " + icon;
+                st.Aciklama = icon + "<br/> " + durum;
                 siteler.Add(st);
             }
             siteler = siteler.OrderBy(p => p.sad).ToList();
@@ -91,9 +73,9 @@ public partial class Default8 : System.Web.UI.Page
             KapListe.DataSource = siteler;
             KapListe.DataBind();
         }
-        string url= siteURLGetir(sid);
+       string url= siteURLGetir(sid);
         
-        Literal1.Text = " <iframe id=\"frame\" width=\"680\" height='360' class='if' src='" + url + "'></iframe>";
+       Literal1.Text = " <iframe id=\"frame\" width=\"680\" height='360' class='if' src='" + url + "'></iframe>";
 
     }
     public string siteAdiGetir(string sid) {

@@ -24,7 +24,14 @@
         -webkit-transform-origin: 0 0;
         overflow:hidden;
     }
-</style>
+        .auto-style1 {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            left: 205px;
+            top: -44px;
+        }
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
@@ -40,7 +47,24 @@
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
+                            
 
+                            <br /><br /><br /><br /><br />
+
+                          <div class="auto-style1">
+                              
+  <button type="button" class="btn btn-info btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Action <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="#">Ayarlarini Değiştir</a></li>
+    <li><a href="#">Istatistikler</a></li>
+    
+    <li role="separator" class="divider"></li>
+    <li><a href="#"> <asp:Label ID="Label1" runat="server" class="label label-danger" Text="Kaldır"></asp:Label></a></li>
+  </ul>
+</div>
+                            <br /><br /><br /><br /><br />
                     <asp:GridView ID="KapListe" runat="server" 
         
                     AlternatingRowStyle-CssClass="str_iki" AutoGenerateColumns="False"
@@ -106,7 +130,7 @@
                         </asp:UpdatePanel>
 
         
-    </div><div class="col-md-4"><div class=""><br /><br /><br /><br /><br />
+    </div><div class="col-md-4"><div class=""><br /><br /><br /><br /><br /> 
  
         <div id="wrap" class="iwrap">
         <asp:Literal ID="Literal1" runat="server"></asp:Literal>
