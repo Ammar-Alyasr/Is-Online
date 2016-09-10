@@ -21,11 +21,19 @@ public partial class Default8 : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-
-       //Literal2.Text= "<div class=\"auto - style1\">< button type = \"button\" class=\"btn btn-info btn-lg\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Action<span class=\"caret\"></span></button><ul class=\"dropdown-menu\"> <li><a href = \"#\" > Ayarlarini Değiştir</a></li><li><a href = \"#\" > Istatistikler </ a ></ li >< li role=\"separator\" class=\"divider\"></li><li><a href = \"#\" > < asp:Label ID = \"Label1\" runat=\"server\" class=\"label label-danger\" Text=\"Kaldır\"></asp:Label></a></li></ul></div>";
-        if (!IsPostBack) {
-            ilk_gelis();
+        if (Session["UserID"] != null)
+        {
+            if (!IsPostBack)
+            {
+                ilk_gelis();
+            }
         }
+        else
+        {
+            Response.Redirect("Default.aspx");
+        }
+
+        
 
     }
     public void ilk_gelis() {
@@ -38,8 +46,6 @@ public partial class Default8 : System.Web.UI.Page
         Literal1.Text = " <iframe id=\"frame\" width=\"680\" height='360' class='embed-responsive-item' src='" + url+ "' frameborder='0' allowfullscreen'></iframe>";
             
     }
-
-
     public string siteURLGetir(string sid)
     {
         string st = "";
@@ -48,6 +54,7 @@ public partial class Default8 : System.Web.UI.Page
         return st;
     }
     public void listele() {
+        lbl_empty.Text = "";
         string sid = Session["siteid"].ToString();
         DataTable dt = vtab.GetDataTable("Select * FROM Degisiklikler WHERE siteID=" + sid + "");
 
@@ -73,10 +80,31 @@ public partial class Default8 : System.Web.UI.Page
             KapListe.DataSource = siteler;
             KapListe.DataBind();
         }
+        else
+        {
+            lbl_empty.Text = "bombos";
+        }
        string url= siteURLGetir(sid);
+
+        Yazdir(sid);
         
        Literal1.Text = " <iframe id=\"frame\" width=\"680\" height='360' class='if' src='" + url + "'></iframe>";
 
+    }
+    void Yazdir(string sid)
+    {
+        string adi = "";
+        string url = "";
+        string contol = "";
+        var sad = vtab.GetDataRow("Select siteAd,siteURL,controlSuresi FROM Siteler Where siteID=" + sid + "");
+        adi =sad["siteAd"].ToString();
+        TextBox2.Text = adi;
+
+        url = sad["siteURL"].ToString();
+        TextBox1.Text = url;
+
+        contol = sad["controlSuresi"].ToString();
+        DropDownList1.Text = contol;
     }
     public string siteAdiGetir(string sid) {
         string st = "";
@@ -89,5 +117,50 @@ public partial class Default8 : System.Web.UI.Page
     protected void KapListe_SelectedIndexChanged(object sender, EventArgs e)
     {
 
+    }
+
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+        
+        if (Panel2.Visible == false)
+        {
+
+            Panel2.Visible = true;
+        }
+        else
+        {
+            Panel2.Visible = false;
+        }
+
+    }
+
+    protected void LinkButton2_Click(object sender, EventArgs e)
+    {
+        Panel2.Visible = false;
+
+    }
+
+
+    protected void LinkButton3_Click(object sender, EventArgs e)
+    {
+        Panel2.Visible = false;
+        vtab.GetDataCell("DELETE FROM Siteler WHERE siteID='" + Session["siteid"].ToString() + "'");
+        Response.Redirect("Default2.aspx");
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Panel2.Visible = false;
+    }
+
+    protected void LinkButton4_Click(object sender, EventArgs e)
+    {
+        string ad = TextBox2.Text;
+        
+        string url = TextBox1.Text;
+        string contol = DropDownList1.Text;
+        
+        vtab.cmd("UPDATE Siteler SET siteAd='" + TextBox2.Text + "' , siteURL='" + url + "' ,  controlSuresi='" + DropDownList1.Text + "' WHERE siteID='" + Session["siteid"].ToString() + "'");
+        Response.Redirect("Default8.aspx");
     }
 }

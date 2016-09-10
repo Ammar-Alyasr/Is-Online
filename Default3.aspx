@@ -84,7 +84,7 @@
 			      
 			      <div class="controls">   
 			          <br />
-                      <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Ekle" Width="74px" />
+                      <asp:Button ID="Button1" runat="server" class="btn btn-info " OnClick="Button1_Click1" Text="Ekle" Width="74px" />
 
 			      </div>
 			    </div>

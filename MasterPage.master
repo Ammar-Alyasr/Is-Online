@@ -51,8 +51,7 @@
                                     <li role="separator" class="divider"></li>
                                     <li><a href="#">Site ayarlari</a></li>
                                     <li><a href="Default3.aspx">Site ekle</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="Default.aspx">Çıkış</a></li>
+                                     <li><a href="logout.aspx">Çıkış</a></li>
                                 </ul>
                             </li>
                         </ul>

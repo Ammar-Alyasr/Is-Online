@@ -27,10 +27,10 @@ public partial class Default2 : System.Web.UI.Page
     /// <summary>
     /// Butonlar calisimiyor......
     /// </summary>
-    void sirala()
+    void sirala(string sql)
     {
-
-        DataTable dt = vtb.GetDataTable("Select Siteler.* , users.userAdSoyad , users.userID from Siteler inner join users on Siteler.userID=users.userID where users.userID= '" + Session["UserID"].ToString() + "' ");
+        
+        DataTable dt = vtb.GetDataTable(sql);
         List<Listele> siteBilgileri = new List<Listele>();
         if (dt.Rows.Count > 0)
         {
@@ -61,6 +61,7 @@ public partial class Default2 : System.Web.UI.Page
                 siteBilgileri.Add(birSite);
                 
             }
+           // siteBilgileri = siteBilgileri.OrderBy(p => p.siteAd).ToList();
             KapListe.DataSource = siteBilgileri;
             KapListe.DataBind();
         }
@@ -70,13 +71,16 @@ public partial class Default2 : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        if (!IsPostBack) { 
+        string sql = "Select Siteler.* , users.userAdSoyad , users.userID from Siteler inner join users on Siteler.userID = users.userID where users.userID = '" + Session["UserID"].ToString() + "' ";
+
         try
         {
             if (Session["UserID"] != null)
             {
-                sirala();
-                //SqlDataSource1.SelectCommand = "Select Siteler.* , users.userAdSoyad , users.userID from Siteler inner join users on Siteler.userID=users.userID where users.userID= '" + Session["UserID"].ToString() + "' ";
+
+
+                sirala(sql);
 
             }
             else
@@ -89,8 +93,9 @@ public partial class Default2 : System.Web.UI.Page
             ktrl.Send("ammar.ahmet@gmail.com", exe.ToString(), "loading", "Anasyfa", Session["Isim"].ToString());
           
         }
-        
-    
+        }
+
+
     }
     protected void KapListe_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -113,7 +118,7 @@ public partial class Default2 : System.Web.UI.Page
         {
             Button btn = (Button)sender;
             Guncelle2(btn.CommandArgument);
-            
+            Response.Redirect("Default2.aspx");
         }
         catch (Exception exe)
         {
@@ -140,7 +145,7 @@ public partial class Default2 : System.Web.UI.Page
                 {
                     if (htaMsji == ddr["siteDurum2"].ToString())
                     {
-
+                        
                         DrmuGncle(htaMsji, dr["siteID"].ToString());
 
                     }
@@ -204,4 +209,25 @@ public partial class Default2 : System.Web.UI.Page
 
     }
 
+
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+        string sql = "Select Siteler.* , users.userAdSoyad , users.userID from Siteler inner join users on Siteler.userID = users.userID where users.userID = '" + Session["UserID"].ToString() + "'order by Siteler.siteDurum2 ";
+
+        sirala(sql);
+    }
+
+    protected void LinkButton2_Click(object sender, EventArgs e)
+    {
+        string sql = "Select Siteler.* , users.userAdSoyad , users.userID from Siteler inner join users on Siteler.userID = users.userID where users.userID = '" + Session["UserID"].ToString() + "'order by Siteler.zaman ";
+
+        sirala(sql);
+    }
+
+    protected void LinkButton3_Click(object sender, EventArgs e)
+    {
+        string sql = "Select Siteler.* , users.userAdSoyad , users.userID from Siteler inner join users on Siteler.userID = users.userID where users.userID = '" + Session["UserID"].ToString() + "'order by Siteler.siteAd ";
+
+        sirala(sql);
+    }
 }

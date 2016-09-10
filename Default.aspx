@@ -96,15 +96,8 @@
 	</div>	
 
             
-	<div class="account">
-			<ul>
-				<li><p>Don't have an <a href="#">account?</a></p></li><span>/</span>
-				<li><p>Forgot <a href="#">password?</a></p></li>
-				<div class="clear"></div>
-			</ul>
-		</div>
 
-	<div class="footer">
+<%--	<div class="footer">
 		<p>
              
              <li><p>Ammar Tarafindan Geliştirildi  <a href="https://www.facebook.com/">fb</a></p></li>
@@ -112,7 +105,7 @@
                 <br />
                  </div>
 		</p>
-	</div>
+	</div>--%>
             
     </form>
 </body>

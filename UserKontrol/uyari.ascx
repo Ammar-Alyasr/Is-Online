@@ -17,7 +17,7 @@
 </div>
         </asp:Panel>
       </div>
-    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="KAPAT" class="btn btn-info btn-xs" />
+    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="OK" class="btn btn-info btn-xs" />
     </asp:Panel>
   
         <ajaxToolkit:ModalPopupExtender  ID="messageBox1" runat="server" TargetControlID="btnShow" PopupControlID="pnlPopup" BackgroundCssClass="messageBox"></ajaxToolkit:ModalPopupExtender>

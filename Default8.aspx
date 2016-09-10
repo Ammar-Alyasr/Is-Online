@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="Haraketler" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default8.aspx.cs" Inherits="Default8" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
 
 <script runat="server">
 
@@ -7,12 +9,12 @@
 </script>
 
 
-
+<%@ Register src="UserKontrol/uyari.ascx" tagname="uyari" tagprefix="uc1" %>
 <asp:Content ID="Content4" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
     .controls {
         height: 51px;
-    }
+    } 
     .iwrap { overflow:hidden; width:100%;  max-height:100%; max-height:100%;}
    #frame {
         -ms-zoom: 0.50;
@@ -24,47 +26,26 @@
         -webkit-transform-origin: 0 0;
         overflow:hidden;
     }
-        .auto-style1 {
-            position: relative;
-            display: inline-block;
-            vertical-align: middle;
-            left: 205px;
-            top: -44px;
-        }
-    </style>
+        </style>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
 
 
 
-     <div style="margin:0 auto;">
+     
                     
-                    </div>
-    <div class="row"><div class="col-md-8">
-                    <asp:ScriptManager ID="ScriptManager1" runat="server">
+                   
+    <div class="row">
+        <div class="col-md-8">
+                    s<asp:ScriptManager ID="ScriptManager1" runat="server">
                     </asp:ScriptManager>
-
+           
+                
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
+                           
                             
-
-                            <br /><br /><br /><br /><br />
-
-                          <div class="auto-style1">
-                              
-  <button type="button" class="btn btn-info btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Action <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="#">Ayarlarini Değiştir</a></li>
-    <li><a href="#">Istatistikler</a></li>
-    
-    <li role="separator" class="divider"></li>
-    <li><a href="#"> <asp:Label ID="Label1" runat="server" class="label label-danger" Text="Kaldır"></asp:Label></a></li>
-  </ul>
-</div>
-                            <br /><br /><br /><br /><br />
                     <asp:GridView ID="KapListe" runat="server" 
         
                     AlternatingRowStyle-CssClass="str_iki" AutoGenerateColumns="False"
@@ -124,22 +105,135 @@
                     <SortedDescendingCellStyle BackColor="#FFFDF8" />
                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                 </asp:GridView>
+                                
+                             
+                            <asp:Label ID="lbl_empty" runat="server" Text=""></asp:Label>
+                            
+        
+        
+                            <div class="container" style="margin-top:50px;">
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                            <div class="col-xs-8 .col-md-8" >
+
+                            <asp:Panel ID="Panel1" runat="server">
+                                
+                                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+
+  <div class="btn-group" role="group">
+      <asp:LinkButton ID="LinkButton1" OnClick="LinkButton1_Click" class="btn btn-primary" runat="server"><span class="glyphicon glyphicon-cog"> Ayarlari Degiisitir   </span></asp:LinkButton>
+   
+  </div>
+
+  <div class="btn-group" role="group">
+      
+      <asp:LinkButton ID="LinkButton2" OnClick="LinkButton2_Click" class="btn btn-warning" runat="server"><span class="glyphicon glyphicon-stats"> Istatistik</span></asp:LinkButton>
+  </div>
+
+  <div class="btn-group" role="group">
+      
+      <asp:LinkButton ID="LinkButton3" OnClick="LinkButton3_Click" class="btn btn-danger" runat="server"><span class="glyphicon glyphicon-remove-circle"> Sil</span></asp:LinkButton>
+
+      <ajaxToolkit:ConfirmButtonExtender ID="LinkButton3_ConfirmButtonExtender" runat="server" ConfirmText="Slınbsın sws"  TargetControlID="LinkButton3" />
+
+  </div>
+
+</div>
+                                    
+                            </asp:Panel>
+                            </div>
+
+                            </div>
+
+        <br /><br /><br /><br />  
+                            
+                            
+                            <asp:Panel ID="Panel2" runat="server" Visible="False" >
+                            <div class="row">
+        <div class="col-md-4">  <div class="form-inline">
+
+      <div class="input-group">
+    <span class="input-group-addon">Adi</span>
+    <asp:TextBox ID="TextBox2" class="form-control" runat="server" aria-describedby="inputGroupSuccess3Status"></asp:TextBox> 
+          </div>
+  </div>
+</div>
+  <div class="col-md-4">
+    <div class="form-inline">
+    <div class="input-group">
+      <span class="input-group-addon">URL</span>
+      
+        <asp:TextBox ID="TextBox1" class="form-control" runat="server"></asp:TextBox>
+        
+    </div>
+      </div>
+</div>
+
+                                    <div class="col-md-2"> <div class="from-inline">
+                                        <asp:DropDownList ID="DropDownList1" runat="server" Class="form-control" Width="70px">
+            <asp:ListItem Text="1 DK"></asp:ListItem>
+            <asp:ListItem Text="5 DK"></asp:ListItem>
+            <asp:ListItem Text="1 SAAT"></asp:ListItem>
+            <asp:ListItem Text="1 GUN"></asp:ListItem>
+            <asp:ListItem class="label label-danger" Text="Passiv" runat="server" ></asp:ListItem>
+        </asp:DropDownList>
+                                        <br /><br />
+
+                                        
+
+                                    </div>
+                                </div>
+                                 <div class="col-md-2" >
+                              
+                                        <asp:LinkButton ID="LinkButton4" OnClick="LinkButton4_Click" class="btn btn-info" runat="server"><span class="glyphicon glyphicon-remove-circle"> Guncelle</span></asp:LinkButton>
+                                
+                                        </div>
+                            </div>
+                        
+
+            
+            <style>
+
+    .ModalPopupBG
+{
+    background-color: #666699;
+    filter: alpha(opacity=50);
+    opacity: 0.7;
+    
+}
+
+.HellowWorldPopup
+{
+    min-width:200px;
+    min-height:150px;
+    
+}
+</style> 
+
+           
+        </asp:Panel>
+                      </div>      
+                            
+                           
 
                             </ContentTemplate>
-                        
+                            
                         </asp:UpdatePanel>
-
+        </div>
+     
         
-    </div><div class="col-md-4"><div class=""><br /><br /><br /><br /><br /> 
+        <div class="col-md-4"><div class=""><br /><br /><br /><br /><br /> 
  
         <div id="wrap" class="iwrap">
         <asp:Literal ID="Literal1" runat="server"></asp:Literal>
 
 </div>
-</div></div></div>
-  
- 
+</div></div>
 
+    </div>
+  
+  
+    <uc1:uyari ID="uyari1" runat="server" />
     </asp:Content>
 
 

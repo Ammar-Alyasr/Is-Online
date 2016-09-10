@@ -1,4 +1,4 @@
-﻿<%@ Page Title="ANA SAYFA" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default2.aspx.cs" Inherits="Default2" %>
+﻿<%@ Page Title="ANA SAYFA" Language="C#" MasterPageFile="~/MasterPage.master" EnableEventValidation="false" AutoEventWireup="true" CodeFile="Default2.aspx.cs" Inherits="Default2" %>
 
 
 
@@ -15,10 +15,32 @@
                     <asp:ScriptManager ID="ScriptManager1" runat="server">
                     </asp:ScriptManager>
 
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="col-md-2"></div>
 
+                            <div class="col-md-9" >
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+  <div class="btn-group" role="group">
+    
+      <asp:LinkButton ID="LinkButton1" class="btn btn-primary" OnClick="LinkButton1_Click" runat="server">Hata Gösteren</asp:LinkButton>
+  </div>
+  <div class="btn-group" role="group">
+      <asp:LinkButton ID="LinkButton2" class="btn btn-warning " OnClick="LinkButton2_Click" runat="server">Güncellemeyen</asp:LinkButton>
+    
+  </div>
+  <div class="btn-group" role="group">
+      <asp:LinkButton ID="LinkButton3" class="btn btn-info" OnClick="LinkButton3_Click" runat="server">Isme Göre</asp:LinkButton>
+   
+  </div>
+        </div>
+</div>
+    
 
+                            
                     <asp:GridView ID="KapListe" runat="server" 
         
                     AlternatingRowStyle-CssClass="str_iki" AutoGenerateColumns="False"
@@ -93,7 +115,7 @@
             <ItemTemplate>
                 
                 <div >
-                    <asp:Button ID="guncelButton" class="btn btn-info btn-sm" runat="server" CausesValidation="false" 
+                    <asp:Button ID="guncelButton" class="btn btn-info btn-sm" runat="server"
                     Text="Güncelle" CommandArgument='<%# Eval("siteID") %>' OnClick="Button1_Click" />
 
                 </div>
@@ -107,7 +129,7 @@
             <ItemTemplate>
                     
                 <div >
-                    <asp:Button ID="Button2" class="btn btn-warning btn-sm" runat="server" CausesValidation="false" 
+                    <asp:Button ID="Button2" class="btn btn-warning btn-sm" runat="server" 
                     Text="Detay" CommandArgument='<%# Eval("siteID") %>' OnClick="Button2_Click" />
 
                 </div>
@@ -125,9 +147,7 @@
                     <SortedDescendingCellStyle BackColor="#FFFDF8" />
                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                 </asp:GridView>
-                            </ContentTemplate>
-                        
-                        </asp:UpdatePanel>
+                            
                     
                   
 </asp:Content>
