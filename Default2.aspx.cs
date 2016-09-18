@@ -71,30 +71,21 @@ public partial class Default2 : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack) { 
-        string sql = "Select Siteler.* , users.userAdSoyad , users.userID from Siteler inner join users on Siteler.userID = users.userID where users.userID = '" + Session["UserID"].ToString() + "' ";
-
-        try
+        if (Session["UserID"] != null)
         {
-            if (Session["UserID"] != null)
+            if (!IsPostBack)
             {
-
+                string sql = "Select Siteler.* , users.userAdSoyad , users.userID from Siteler inner join users on Siteler.userID = users.userID where users.userID = '" + Session["UserID"].ToString() + "' ";
 
                 sirala(sql);
+            }
 
-            }
-            else
-            {
-                Response.Redirect("Default.aspx");
-            }
         }
-        catch (Exception exe)
+        else
         {
-            ktrl.Send("ammar.ahmet@gmail.com", exe.ToString(), "loading", "Anasyfa", Session["Isim"].ToString());
-          
+            Response.Redirect("Default.aspx");
         }
-        }
-
+        
 
     }
     protected void KapListe_SelectedIndexChanged(object sender, EventArgs e)
@@ -118,7 +109,7 @@ public partial class Default2 : System.Web.UI.Page
         {
             Button btn = (Button)sender;
             Guncelle2(btn.CommandArgument);
-            Response.Redirect("Default2.aspx");
+            //Response.Redirect("Default2.aspx");
         }
         catch (Exception exe)
         {
@@ -131,6 +122,7 @@ public partial class Default2 : System.Web.UI.Page
     void Guncelle2(string gelenID)
     {
         var dr = vtb.GetDataRow("SELECT *  FROM Siteler where siteID= '" + gelenID + "' ");
+        string siteID = dr["siteID"].ToString();
         DataTable dtt = vtb.GetDataTable("select * from GuncelSiteler");
 
         string vriTbndanGlnURL = dr["siteURL"].ToString();
@@ -146,7 +138,7 @@ public partial class Default2 : System.Web.UI.Page
                     if (htaMsji == ddr["siteDurum2"].ToString())
                     {
                         
-                        DrmuGncle(htaMsji, dr["siteID"].ToString());
+                        DrmuGncle(htaMsji, siteID);
 
                     }
 
@@ -155,12 +147,12 @@ public partial class Default2 : System.Web.UI.Page
                         /// <summary>
                         /// Burada site durumu bir degisiklik gosterdi anlamina geliyor.... Errorcode: {0}500 * 
                         /// </summary>
-                        DrmuGncle(htaMsji, dr["siteID"].ToString());
+                        DrmuGncle(htaMsji, siteID);
                         DrmuGncle2(htaMsji, ddr["siteID"].ToString());
 
 
                         ktrl.Send(Session["Email"].ToString(), htaMsji, dr["siteAd"].ToString(), dr["siteURL"].ToString(), dr["zaman"].ToString());
-                        yapilanDegisiklik(dr["siteID"].ToString(), dr["userID"].ToString(), DateTime.Now.ToString(), htaMsji);
+                        yapilanDegisiklik(siteID, dr["userID"].ToString(), DateTime.Now.ToString(), htaMsji);
                        
                     }
                 }

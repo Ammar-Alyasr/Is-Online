@@ -5,9 +5,6 @@
 
 <asp:Content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolder2">
     
-<%--    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sitesConnectionString %>" DeleteCommand="DELETE FROM [Siteler] WHERE [siteID] = @siteID" InsertCommand="INSERT INTO [Siteler] ([siteAd], [siteURL], [siteDurum], [controlSuresi]) VALUES (@siteAd, @siteURL, @siteDurum, @controlSuresi)" SelectCommand="SELECT * FROM [Siteler]" UpdateCommand="UPDATE [Siteler] SET [siteAd] = @siteAd, [siteURL] = @siteURL, [siteDurum] = @siteDurum, [controlSuresi] = @controlSuresi WHERE [siteID] = @siteID">--%>
-
-           <%-- </asp:SqlDataSource>--%>
 
                 <div style="margin:0 auto;">
                     
@@ -26,14 +23,14 @@
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
   <div class="btn-group" role="group">
     
-      <asp:LinkButton ID="LinkButton1" class="btn btn-primary" OnClick="LinkButton1_Click" runat="server">Hata Gösteren</asp:LinkButton>
+      <asp:LinkButton ID="LinkButton1" class="btn btn-primary" OnClick="LinkButton1_Click" runat="server" data-placement="bottom" title="Hatali Olan Siteleri Filtere">Hata Gösteren</asp:LinkButton>
   </div>
   <div class="btn-group" role="group">
-      <asp:LinkButton ID="LinkButton2" class="btn btn-warning " OnClick="LinkButton2_Click" runat="server">Güncellemeyen</asp:LinkButton>
+      <asp:LinkButton ID="LinkButton2" class="btn btn-warning " OnClick="LinkButton2_Click" runat="server" data-placement="top" title="Guncelleme Tarihine Gore Filtere">Güncellemeyen</asp:LinkButton>
     
   </div>
   <div class="btn-group" role="group">
-      <asp:LinkButton ID="LinkButton3" class="btn btn-info" OnClick="LinkButton3_Click" runat="server">Isme Göre</asp:LinkButton>
+      <asp:LinkButton ID="LinkButton3" class="btn btn-info" OnClick="LinkButton3_Click" runat="server" data-placement="bottom" title="Isme Gore Sirala">Isme Göre</asp:LinkButton>
    
   </div>
         </div>

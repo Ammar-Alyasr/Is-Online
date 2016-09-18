@@ -21,12 +21,21 @@ public partial class Default8 : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (KapListe.DataSource == null)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[3] { new DataColumn("Site Adi"), new DataColumn("Aciklama"), new DataColumn("Tarih") });
+            KapListe.DataSource = dt;
+            KapListe.DataBind();
+        }
+
         if (Session["UserID"] != null)
         {
             if (!IsPostBack)
             {
                 ilk_gelis();
             }
+            
         }
         else
         {
@@ -54,7 +63,7 @@ public partial class Default8 : System.Web.UI.Page
         return st;
     }
     public void listele() {
-        lbl_empty.Text = "";
+       
         string sid = Session["siteid"].ToString();
         DataTable dt = vtab.GetDataTable("Select * FROM Degisiklikler WHERE siteID=" + sid + "");
 
@@ -80,10 +89,7 @@ public partial class Default8 : System.Web.UI.Page
             KapListe.DataSource = siteler;
             KapListe.DataBind();
         }
-        else
-        {
-            lbl_empty.Text = "bombos";
-        }
+       
        string url= siteURLGetir(sid);
 
         Yazdir(sid);
@@ -121,7 +127,17 @@ public partial class Default8 : System.Web.UI.Page
 
     protected void LinkButton1_Click(object sender, EventArgs e)
     {
-        
+        //  ClientScript.RegisterStartupScript(GetType(), "ScrollScript", "window.onload = function() {document.getElementById('objectid').scrollIntoView(true);}", true);
+        if (IsPostBack)
+        {
+            string script = @"window.onload = function SetButtonScroll() {
+                var height = document.body.scrollHeight;
+                var width = document.body.scrollWidth;
+                window.scrollTo(0, height);
+        }";
+            this.ClientScript.RegisterStartupScript(this.GetType(), "setScroll", script, true);
+        }
+
         if (Panel2.Visible == false)
         {
 
@@ -144,6 +160,7 @@ public partial class Default8 : System.Web.UI.Page
     protected void LinkButton3_Click(object sender, EventArgs e)
     {
         Panel2.Visible = false;
+        vtab.GetDataCell("DELETE FROM Degisiklikler WHERE siteID='" + Session["siteid"].ToString() + "'");
         vtab.GetDataCell("DELETE FROM Siteler WHERE siteID='" + Session["siteid"].ToString() + "'");
         Response.Redirect("Default2.aspx");
     }

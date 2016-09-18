@@ -6,6 +6,7 @@
 <title>Is Online! - MSKU</title>
 <!-- Custom Theme files -->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+  
 <!-- Custom Theme files -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -26,13 +27,26 @@
 </script>	
 
 
+    <style type="text/css">
+        .auto-style1 {
+            width: 168px;
+            height: 135px;
+            margin-left: 62px;
+            margin-top: 0;
+        }
+    </style>
+
+
 </head>
 <body>  <form id="form1"     runat="server">
    
         
 	<div class="head">
+
 		<div class="logo">
+
 			<div class="logo-top">
+                    <img src="image/muglaLogo.png" class="auto-style1" />          
 				<h1>Muğla Sıtkı Koçman Üniversitesi</h1>
 			</div>
 			<div class="logo-bottom">
@@ -46,11 +60,13 @@
          
                  <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
+        <br />
+        <br />
 		<div class="login">
 			<div class="sap_tabs">
 				<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
 					<ul class="resp-tabs-list">
-						<li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Login</span></li>
+						<li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Giriş</span></li>
 						<%--<li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><label>/</label><span>Sign up</span></li>--%>
 						<div class="clearfix"></div>
 					</ul>				  	 
@@ -95,18 +111,6 @@
 		<div class="clear"></div>
 	</div>	
 
-            
-
-<%--	<div class="footer">
-		<p>
-             
-             <li><p>Ammar Tarafindan Geliştirildi  <a href="https://www.facebook.com/">fb</a></p></li>
-            <div class="clear">
-                <br />
-                 </div>
-		</p>
-	</div>--%>
-            
     </form>
 </body>
 </html>

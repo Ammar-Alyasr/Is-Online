@@ -75,6 +75,13 @@ public partial class Default3 : System.Web.UI.Page
         }
     }
 
+    void yapilanDegisiklik(string siteID, string userID, string zaman, string degisik)
+    {
+
+        var sql = vtb.cmd("INSERT INTO Degisiklikler (siteID, userID, zaman, GosterilenDegisiklik) values  ('" + siteID + "' , '" + userID + "', '" + zaman + "' ,'" + degisik + "' ) ");
+
+    }
+
     protected void Button1_Click1(object sender, EventArgs e)
     {
         try

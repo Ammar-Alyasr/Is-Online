@@ -42,8 +42,7 @@
                     </asp:ScriptManager>
            
                 
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>
+    
                            
                             
                     <asp:GridView ID="KapListe" runat="server" 
@@ -61,18 +60,7 @@
                     </EmptyDataTemplate>
                     <AlternatingRowStyle CssClass="str_iki" BackColor="White" ForeColor="#284775"></AlternatingRowStyle>
                   <Columns>
-                   <asp:TemplateField>
-                            <HeaderTemplate>
-                                Site Ad
-                            </HeaderTemplate>
-                            <ItemTemplate>
-                                <div>
-                                    <%# Eval("sad") %>
-                                </div>
-
-                            </ItemTemplate>
-
-                        </asp:TemplateField>
+                   
                      <asp:TemplateField>
                             <HeaderTemplate>
                                 Açıklama
@@ -106,11 +94,8 @@
                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                 </asp:GridView>
                                 
-                             
-                            <asp:Label ID="lbl_empty" runat="server" Text=""></asp:Label>
-                            
-        
-        
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
                             <div class="container" style="margin-top:50px;">
                             <div class="row">
                                 <div class="col-md-2"></div>
@@ -127,7 +112,7 @@
 
   <div class="btn-group" role="group">
       
-      <asp:LinkButton ID="LinkButton2" OnClick="LinkButton2_Click" class="btn btn-warning" runat="server"><span class="glyphicon glyphicon-stats"> Istatistik</span></asp:LinkButton>
+      <asp:LinkButton ID="LinkButton2" OnClick="LinkButton2_Click" class="btn btn-warning" runat="server" ><span class="glyphicon glyphicon-stats"> Istatistik</span></asp:LinkButton>
   </div>
 
   <div class="btn-group" role="group">
@@ -145,7 +130,7 @@
 
                             </div>
 
-        <br /><br /><br /><br />  
+        <br /><br /> 
                             
                             
                             <asp:Panel ID="Panel2" runat="server" Visible="False" >
@@ -231,9 +216,6 @@
 </div></div>
 
     </div>
-  
-  
-    <uc1:uyari ID="uyari1" runat="server" />
     </asp:Content>
 
 

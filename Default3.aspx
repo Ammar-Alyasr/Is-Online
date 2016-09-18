@@ -50,8 +50,8 @@
                       <br /><br />
                       <label class="control-label"  for="username">Site Isimi</label>
                       <div class="input-group input-group-sm">
-  <span class="input-group-addon" id="sizing-addon3">@</span>
-  <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Username" aria-describedby="sizing-addon3"></asp:TextBox>
+  <span class="input-group-addon" id="sizing-addon3">Siteyi Belirleyecek Bir isim</span>
+  <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="site isimi" aria-describedby="sizing-addon3"></asp:TextBox>
 </div>
 &nbsp;</div>
 			    </div>

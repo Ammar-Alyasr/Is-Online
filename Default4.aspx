@@ -19,7 +19,7 @@
     </div>
         <br />
         
-        <asp:Timer ID="Timer1" runat="server" Interval="8000" OnTick="Timer1_Tick"></asp:Timer>
+        <asp:Timer ID="Timer1" runat="server" Interval="60000" OnTick="Timer1_Tick"></asp:Timer>
                 <br />
                 <br />
                 <br />
