@@ -74,7 +74,7 @@ public class KontrolEt
         smtp.EnableSsl = true;
         smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
         smtp.UseDefaultCredentials = false;
-        smtp.Credentials = new NetworkCredential("yaaserhamod@gmail.com", "258025802yaser");
+        smtp.Credentials = new NetworkCredential("yaaserhamod@gmail.com", "pass");
 
         using (var message = new MailMessage("yaaserhamod@gmail.com", to))
         {
